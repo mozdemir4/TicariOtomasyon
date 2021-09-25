@@ -1,0 +1,66 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<br />
+<h4>Kategori Listesi</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>Kategori Ad</th>
+            <th>Sil</th>
+            <th>Düzenle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+
+                <td>@x.KategoriAD</td>
+                <td><a class="btn btn-danger" id="btn1" href="/Kategori/KategoriSil/@x.KategoriID">Sil</a></td>
+                <td><a class="btn btn-warning" href="/Kategori/KategoriGuncelle/@x.KategoriID">Düzenle</a></td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }),
+new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+}
+)
+<a href="/Kategori/KategoriEkle" class="btn btn-outline-primary">Kategori Ekle</a>
+
+<script>
+    $('#btn1').click(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+    });
+
+</script>
+

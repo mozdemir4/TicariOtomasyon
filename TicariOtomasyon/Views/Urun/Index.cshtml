@@ -1,0 +1,52 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+{
+<p>
+    Ürün Ad: @Html.TextBox("p")
+    <input type="submit" value="Ara" />
+</p>
+}
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Ad</th>
+            <th>Marka</th>
+            <th>Stok</th>
+            <th>Alış Fiyat</th>
+            <th>Satış Fiyat</th>
+            <th>Ürünün Kategorisi</th>
+            <th>Durum</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Satış Yap</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+        <tr>
+            <td>@urun.UrunAd</td>
+            <td>@urun.Marka</td>
+            <td>@urun.Stok</td>
+            <td>@urun.AlisFiyat ₺</td>
+            <td>@urun.SatisFiyat ₺</td>
+            <td>@urun.Kategori.KategoriAD</td>
+            <td>@urun.Durum</td>
+            <td><a class="btn btn-danger" href="/Urun/UrunSil/@urun.UrunID">Sil</a></td>
+            <td><a class="btn btn-warning" href="/Urun/UrunGuncelle/@urun.UrunID">Güncelle</a></td>
+            <td><a class="btn btn-primary" href="/Urun/SatisEkle/@urun.UrunID">Satış Ekle</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<a href="/Urun/UrunEkle" class="btn btn-outline-primary">Ürün Ekle</a>
+

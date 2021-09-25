@@ -1,0 +1,36 @@
+﻿@model TicariOtomasyon.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5>Satış Güncelleme Sayfası</h5>
+
+@using (Html.BeginForm("SatisGuncelle", "Satis", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.SatisID)
+    <label>Ürün</label>
+    @Html.DropDownListFor(x => x.Urunid, (List<SelectListItem>)ViewBag.urunlist, new { @class = "form-control" })
+    <br />
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.Personelid, (List<SelectListItem>)ViewBag.personellist, new { @class = "form-control" })
+    <br />
+    <label>Cari</label>
+    @Html.DropDownListFor(x => x.Cariid, (List<SelectListItem>)ViewBag.carilist, new { @class = "form-control" })
+    <br>
+    @Html.Label("Adet")
+    @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+    <br />
+    @Html.Label("Fiyat")
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    <br />
+    @Html.Label("Toplam Futar")
+    @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+    <br />
+    <label>Tarih</label>
+    @Html.TextBoxFor(x=>x.Tarih, new { @class="form-control"})
+
+    <button style="margin: 5px 0 0 0" class="btn btn-outline-primary">Güncelle</button>
+}
+
+

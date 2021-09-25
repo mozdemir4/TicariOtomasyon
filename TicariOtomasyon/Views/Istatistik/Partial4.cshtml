@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.Siniflar.SinifGroup3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Marka Gruplandırma</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Marka Ad</th>
+                    <th>İlerleme</th>
+                    <th style="width: 40px">Marka Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int say = 0;}
+                @foreach (var j in Model)
+                {
+                <tr>
+                    <td>@{say++;}@say</td>
+                    <td>@j.marka</td>
+                    @if (j.sayi > 1 && j.sayi < 4)
+                    {
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-danger" style="width: 55%"></div>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" style="width: 35%"></div>
+                            </div>
+                        </td>
+                    }
+                    <td><span class="badge bg-danger">@j.sayi</span></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -1,0 +1,28 @@
+﻿@model TicariOtomasyon.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>Ürün Ekleme Sayfası</h4>
+@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post))
+{
+    <label>Ürün Ad</label>
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <label>Marka</label>
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    <label>Stok</label>
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <label>Alış Fiyat</label>
+    @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+    <label>Satış Fiyat</label>
+    @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    <label>Kategori</label>
+    @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.deger, new { @class = "form-control" })
+    <label>Görsel</label>
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    <label>Durumu</label>
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <button style="margin: 5px 0 0 0" class="btn btn-outline-primary">Ekle</button>
+}
+

@@ -1,0 +1,15 @@
+﻿@model TicariOtomasyon.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h5>Departman Ekleme Sayfası</h5>
+@using (Html.BeginForm("DepartmanEkle", "Departman", FormMethod.Post))
+{
+    <label>Departman Ad</label>
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    <button style="margin: 5px 0 0 0" class="btn btn-outline-primary">Ekle</button>
+
+}
+

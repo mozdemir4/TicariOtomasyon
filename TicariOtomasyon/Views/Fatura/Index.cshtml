@@ -1,0 +1,70 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Fatura Listesi</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Seri No & Sıra No</th>       
+            <th>Toplam Tutar</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>  
+            <th>Yeni Kalem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.FaturaSeriNo @k.FaturaSiraNo</td> 
+                <td>@k.ToplamTutar ₺</td>
+                <td>@k.Tarih.ToShortDateString()</td>
+                <td>@k.Saat</td>
+                <td><a href="~/Fatura/FaturaGuncelle/@k.FaturaID" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="~/Fatura/FaturaDetay/@k.FaturaID" class="btn btn-info">Detay</a></td>         
+                <td><a href="~/Fatura/FaturaDetay/@k.FaturaID" class="btn btn-danger">Kalem</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="~/Fatura/FaturaEkle" class="btn btn-outline-primary">Yeni Fatura Girişi</a>
+<br /><br />
+<button  type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#Modal1">Popup Penceresi</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">test</h2>
+           </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Seri No & Sıra No</th>
+                            <th>Tarih</th>
+                            <th>Toplam Tutar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var l in Model)
+                        {
+                            <tr>
+                                <td>@l.FaturaSeriNo</td>
+                                <td>@l.Tarih.ToShortDateString()</td>
+                                <td>@l.ToplamTutar</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button class="btn btn-danger" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

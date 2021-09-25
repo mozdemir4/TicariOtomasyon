@@ -1,0 +1,30 @@
+﻿@model TicariOtomasyon.Models.Siniflar.Cari
+<div class="login-form login-form-left">
+    <div class="agile-row">
+        <h3>Cari Kaydı</h3>
+        <div class="login-agileits-top">
+            @using (Html.BeginForm("Partial1", "Login", FormMethod.Post))
+            {
+                @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control", @placeholder = "Adınız" })
+                @Html.ValidationMessageFor(x => x.CariAd, null, new { @style = "text-danger" })
+
+                @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control", @placeholder = "Soyadınız" })
+                @Html.ValidationMessageFor(x => x.CariAd, null, new { @style = "text-danger" })
+
+                @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control", @placeholder = "Mail Adresiniz" })
+                @Html.ValidationMessageFor(x => x.CariAd, null, new { @style = "text-danger" })
+
+                @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control", @placeholder = "Şehriniz" })
+                @Html.ValidationMessageFor(x => x.CariSehir, null, new { @style = "text-danger" })
+
+                @Html.TextBoxFor(x => x.CariSifre, new { @class = "form-control", @placeholder = "Şifreniz" })
+                @Html.ValidationMessageFor(x => x.CariAd, null, new { @style = "text-danger" })
+                <div class="login-check">
+                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Kuralları Okudum</label>
+                </div>
+                <input type="submit" value="Kaydol">
+
+            }
+        </div>
+    </div>
+</div>

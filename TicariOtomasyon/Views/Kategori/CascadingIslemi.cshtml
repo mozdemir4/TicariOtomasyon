@@ -1,0 +1,58 @@
+﻿@model TicariOtomasyon.Models.Siniflar.Cascading
+@{
+    ViewBag.Title = "CascadingIslemi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div>
+    <h3>Kategoriler - Ürünler</h3>
+</div>
+<div>
+    @Html.Label("Kategoriler")
+    @Html.DropDownList("CsdKategori", Model.Kategoriler, "Kategori Seçiniz", new { @class = "form-control" })
+    <br />
+    @Html.Label("Ürünler")
+    @Html.DropDownList("CsdUrun", Model.Urunler, "Ürün Seçiniz", new { @class = "form-control" })
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(function () {
+
+        $('#CsdKategori').change(function () {
+
+            var id = $('#CsdKategori').val();
+
+            $.ajax({
+
+                url: '/Kategori/UrunGetir',
+
+                data: { p: id },
+
+                type: "POST",
+
+                dataType: "Json",
+
+                success: function (data) {
+
+                    console.log(data);
+
+                    $('#CsdUrun').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#CsdUrun').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,42 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h5>Personel Listesi</h5>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Personel ID</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Görsel</th>
+            <th>Departman</th>
+            <th>Güncelle</th>
+            <th>Satışlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.PersonelID</td>
+                <td>@x.PersonelAd</td>
+                <td>@x.PersonelSoyad</td>
+                <td>
+                    <img src="@x.PersonelGorsel" style="border: 1px solid #ddd; border-radius: 4px;
+padding: 5px;
+  width: 150px;" />
+                </td>
+                <td>@x.Departman.DepartmanAd</td>
+                <td><a href="~/Personel/PersonelGuncelle/@x.PersonelID" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="~/Departman/DepartmanPersonelSatis/@x.PersonelID" class="btn btn-info">Satışlar</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a href="~/Personel/PersonelEkle" class="btn btn-outline-primary">Personel Ekle</a>
+

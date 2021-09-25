@@ -1,0 +1,28 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "CariKargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Adımlar</th>
+            <th>Açıklama</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    @{int sayac = 0;}
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@{sayac++;@sayac}</td>
+                <td>@x.Aciklama</td>
+                <td>@x.Tarih.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

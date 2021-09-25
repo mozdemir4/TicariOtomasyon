@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.Siniflar.SinifGroup2>
+
+
+<br />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Departman Personel Listesi</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Departman</th>
+                    <th>İlerleme</th>
+                    <th style="width: 40px">Personel Sayı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Departman</td>
+                        <td></td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-danger">@x.Sayi</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

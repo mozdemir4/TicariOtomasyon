@@ -1,0 +1,27 @@
+﻿@model TicariOtomasyon.Models.Siniflar.FaturaKalem
+@{
+    ViewBag.Title = "FaturaKalemEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4 class="mt-4">Fatura Kalem Ekleme </h4>
+<ol class="breadcrumb mb-4"></ol>
+
+@using (Html.BeginForm("FaturaKalemEkle", "Fatura", FormMethod.Post))
+{
+    <strong><label>Fatura Id: @ViewBag.deger</label></strong>
+    <br />
+    <label>Miktar</label>
+    @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+    <br />
+    <label>Birim Fiyat</label>
+    @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
+    <br />
+    <label>Tutar</label>
+    @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+    <br />
+    <label>Fatura Id</label>
+    @Html.TextBoxFor(x=>x.Faturaid, new { @class = "form-control" })
+    <button class="btn btn-outline-primary">Ekle</button>
+}
+
+
